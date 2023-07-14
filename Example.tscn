@@ -1,0 +1,155 @@
+[gd_scene load_steps=4 format=3 uid="uid://dusugc7oxmo0j"]
+
+[ext_resource type="PackedScene" uid="uid://cst3jbvfpb3v" path="res://TurnContainerUI.tscn" id="1_0prfq"]
+[ext_resource type="Script" path="res://Example.gd" id="1_yjbe3"]
+[ext_resource type="Texture2D" uid="uid://cy2pqoq510q3e" path="res://sample_enemies/peter.png" id="3_beb57"]
+
+[node name="ExampleScene" type="Node2D"]
+script = ExtResource("1_yjbe3")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TurnLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="TurnContainerUI" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_0prfq")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Enemies" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Rock" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Enemies"]
+layout_mode = 2
+alignment = 1
+
+[node name="RockHP" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Rock"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP"
+horizontal_alignment = 1
+
+[node name="RockPeter" type="TextureRect" parent="CenterContainer/VBoxContainer/Enemies/Rock"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_beb57")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Rock"]
+layout_mode = 2
+text = "Wk: Paper
+Nu: Scissors"
+horizontal_alignment = 1
+
+[node name="Paper" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Enemies"]
+layout_mode = 2
+alignment = 1
+
+[node name="PaperHP" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Paper"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP"
+horizontal_alignment = 1
+
+[node name="PaperPeter" type="TextureRect" parent="CenterContainer/VBoxContainer/Enemies/Paper"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_beb57")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Paper"]
+layout_mode = 2
+text = "Wk: Scissors
+Rpl: Rock"
+horizontal_alignment = 1
+
+[node name="Scissors" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Enemies"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScissorsHP" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Scissors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP"
+horizontal_alignment = 1
+
+[node name="ScissorsPeter" type="TextureRect" parent="CenterContainer/VBoxContainer/Enemies/Scissors"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_beb57")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Enemies/Scissors"]
+layout_mode = 2
+text = "Wk: Rock
+Rs: Scissors"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RockButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+text = "Rock"
+
+[node name="PaperButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+text = "Paper"
+
+[node name="ScissorsButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+text = "Scissors"
+
+[node name="RockAllButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+text = "Rock (All hit)"
+
+[node name="PassButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+text = "Pass"
+
+[node name="TargetList" type="ItemList" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EnemyTurnTimer" type="Timer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="ResultLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Buttons/RockButton" to="." method="_on_rock_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RockButton" to="." method="_on_rock_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Buttons/PaperButton" to="." method="_on_paper_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/PaperButton" to="." method="_on_paper_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Buttons/ScissorsButton" to="." method="_on_scissors_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/ScissorsButton" to="." method="_on_scissors_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Buttons/RockAllButton" to="." method="_on_scissors_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RockAllButton" to="." method="_on_rock_all_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Buttons/PassButton" to="." method="_on_scissors_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/PassButton" to="." method="_on_pass_button_pressed"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhimxlbod5cib"]
+
+[ext_resource type="Texture2D" uid="uid://dkg45ceg68px6" path="res://icon_graphics/full_icon.png" id="1_v5lal"]
+[ext_resource type="Script" path="res://TurnIconUI.gd" id="2_yrlko"]
+
+[node name="TurnIconUI" type="TextureRect"]
+texture = ExtResource("1_v5lal")
+script = ExtResource("2_yrlko")
